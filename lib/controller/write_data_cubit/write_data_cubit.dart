@@ -7,21 +7,23 @@ import 'package:learn_lang_app/utils/hive_constants.dart';
 
 class WriteDataCubit extends Cubit<WriteDataStates> {
   WriteDataCubit() : super(WriteDataInitialState());
-  static get(context) => BlocProvider.of(context);
+  static WriteDataCubit get(context) => BlocProvider.of(context);
   final Box _box = Hive.box(HiveConstants.wordBox);
   String text = "";
   bool isArabic = true;
-  int colorCode = 0xFF4A4A7A3;
+  int colorCode = 0xFFFFB833;
   updateText(String text) {
     this.text = text;
   }
 
   updateIsArabic(bool isArabic) {
     this.isArabic = isArabic;
+    emit(WriteDataInitialState());
   }
 
   updateColorCode(int colorCode) {
     this.colorCode = colorCode;
+    emit(WriteDataInitialState());
   }
 
   void addWord() {
