@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:learn_lang_app/views/style/color_manger.dart';
+import 'package:learn_lang_app/views/widget/Lan_filter_widget.dart';
 
-import 'package:learn_lang_app/views/widget/custom_dialog.dart';
+import 'package:learn_lang_app/views/widget/add_word_dialog.dart';
 
 class HoneScreen extends StatelessWidget {
   const HoneScreen({super.key});
@@ -12,14 +13,21 @@ class HoneScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorManger.white,
         onPressed: () => showDialog(
-            builder: (context) => const CustomDialog(), context: context),
+            builder: (context) => const AddWordDialog(), context: context),
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
         title: const Text("Home"),
       ),
-      body: const Column(
-        children: [],
+      body: const Padding(
+        padding: EdgeInsetsDirectional.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            Row(
+              children: [LanFilterWidget()],
+            )
+          ],
+        ),
       ),
     );
   }

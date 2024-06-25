@@ -6,7 +6,7 @@ import 'package:learn_lang_app/utils/hive_constants.dart';
 
 class ReadDataCubit extends Cubit<ReadDataStates> {
   ReadDataCubit() : super(ReadDataInitialState());
-  static get(context) => BlocProvider.of(context);
+  static ReadDataCubit get(context) => BlocProvider.of(context);
 
   final Box _box = Hive.box(HiveConstants.wordBox);
   LanguageFilter languageFilter = LanguageFilter.allWord;
@@ -25,11 +25,13 @@ class ReadDataCubit extends Cubit<ReadDataStates> {
   }
 
   getWords() {
+    
     emit(ReadDataLoadingState());
     try {
       List<WordModel> wordsToReturn =
           List.from(_box.get(HiveConstants.wordList, defaultValue: []))
               .cast<WordModel>();
+     
       _removeUnWantWords(wordsToReturn);
       _applySorting(wordsToReturn);
       emit(ReadDataSuccessState(words: wordsToReturn));
