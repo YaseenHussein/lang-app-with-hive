@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_lang_app/controller/read_data_cubit/read_data_cubit.dart';
+import 'package:learn_lang_app/controller/read_data_cubit/read_data_states.dart';
 import 'package:learn_lang_app/views/style/color_manger.dart';
 import 'package:learn_lang_app/views/widget/Lan_filter_widget.dart';
 
 import 'package:learn_lang_app/views/widget/add_word_dialog.dart';
+import 'package:learn_lang_app/views/widget/lan_filter_button.dart';
+import 'package:learn_lang_app/views/widget/word_widget.dart';
 
 class HoneScreen extends StatelessWidget {
   const HoneScreen({super.key});
@@ -24,8 +29,16 @@ class HoneScreen extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              children: [LanFilterWidget()],
-            )
+              children: [
+                LanFilterWidget(),
+                Spacer(),
+                LanFilterButton(),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Expanded(child: WordWidget())
           ],
         ),
       ),

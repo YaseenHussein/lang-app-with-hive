@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:learn_lang_app/controller/write_data_cubit/write_data_cubit.dart';
@@ -82,12 +84,13 @@ class _CustomFormState extends State<CustomForm> {
     if ((codeUnitAt >= 65 && codeUnitAt <= 90) ||
         (codeUnitAt >= 90 && codeUnitAt <= 122)) {
       return CharType.english;
-    } else if ((1569 >= codeUnitAt && 1610 <= codeUnitAt)) {
+    } else if (codeUnitAt >= 1575 && codeUnitAt <= 1610) {
       return CharType.arabic;
     } else if (32 == codeUnitAt) {
       return CharType.space;
+    } else {
+      return CharType.notValid;
     }
-    return CharType.notValid;
   }
 }
 

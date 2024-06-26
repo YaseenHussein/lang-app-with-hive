@@ -11,8 +11,10 @@ import 'package:learn_lang_app/views/style/theme_manger.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+
   Hive.registerAdapter(WordTypeAdapter());
   await Hive.openBox(HiveConstants.wordBox);
+
   runApp(const MyApp());
 }
 
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
           create: (context) => WriteDataCubit(),
         ),
         BlocProvider(
-          create: (context) => ReadDataCubit(),
+          create: (context) => ReadDataCubit()..getWords(),
         ),
       ],
       child: MaterialApp(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learn_lang_app/controller/read_data_cubit/read_data_cubit.dart';
-import 'package:learn_lang_app/controller/write_data_cubit/write_data_cubit.dart';
-import 'package:learn_lang_app/controller/write_data_cubit/write_data_states.dart';
+import 'package:learn_lang_app/controller/read_data_cubit/read_data_states.dart';
 import 'package:learn_lang_app/views/style/color_manger.dart';
 
 class LanFilterWidget extends StatelessWidget {
@@ -10,7 +9,7 @@ class LanFilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WriteDataCubit, WriteDataStates>(
+    return BlocBuilder<ReadDataCubit, ReadDataStates>(
       builder: (context, state) {
         return Text(
           _getLangFilter(ReadDataCubit.get(context).languageFilter),

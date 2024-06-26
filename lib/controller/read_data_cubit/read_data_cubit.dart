@@ -14,29 +14,31 @@ class ReadDataCubit extends Cubit<ReadDataStates> {
   SortingType sortingType = SortingType.descending;
   updateLanguageFilter({required LanguageFilter languageFilter}) {
     this.languageFilter = languageFilter;
+    getWords();
   }
 
   updateSortedBy({required SortedBy sortedBy}) {
     this.sortedBy = sortedBy;
+    getWords();
   }
 
   updateSortingType({required SortingType sortingType}) {
     this.sortingType = sortingType;
+    getWords();
   }
 
   getWords() {
-    
     emit(ReadDataLoadingState());
     try {
       List<WordModel> wordsToReturn =
           List.from(_box.get(HiveConstants.wordList, defaultValue: []))
               .cast<WordModel>();
-     
+
       _removeUnWantWords(wordsToReturn);
       _applySorting(wordsToReturn);
       emit(ReadDataSuccessState(words: wordsToReturn));
     } catch (error) {
-      emit(ReadDataFelidState(
+      emit(ReadDataFailedState(
           message: "there are problems please try later again"));
     }
   }
@@ -64,6 +66,13 @@ class ReadDataCubit extends Cubit<ReadDataStates> {
         _reverse(wordsToReturn);
       }
     } else {
+//It sorts a list of WordModel objects called wordsToReturn based on the length of the text property of each object.
+
+//The sort method is called on the wordsToReturn list and it takes a comparison function as an argument. This comparison function compares two WordModel objects (a and b) based on the length of their text property.
+
+//The compareTo method is used to compare the lengths of the text properties. It returns a negative value if a.text.length is less than b.text.length, a positive value if a.text.length is greater than b.text.length, and 0 if they are equal.
+
+//After the sort method is called, the wordsToReturn list will be sorted in ascending order based on the length of the text property of each WordModel object.
       wordsToReturn.sort(
         (WordModel a, WordModel b) => a.text.length.compareTo(b.text.length),
       );
