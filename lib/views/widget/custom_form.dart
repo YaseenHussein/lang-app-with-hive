@@ -1,15 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:learn_lang_app/controller/write_data_cubit/write_data_cubit.dart';
 import 'package:learn_lang_app/views/style/color_manger.dart';
 
 class CustomForm extends StatefulWidget {
-  const CustomForm({super.key, required this.label, required this.fromKey});
+  const CustomForm({super.key, required this.label, required this.formKey});
   final String label;
-  final GlobalKey<FormState> fromKey;
-
+  final GlobalKey<FormState> formKey;
   @override
   State<CustomForm> createState() => _CustomFormState();
 }
@@ -25,7 +21,7 @@ class _CustomFormState extends State<CustomForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: widget.fromKey,
+        key: widget.formKey,
         child: TextFormField(
           autofocus: true,
           controller: controller,

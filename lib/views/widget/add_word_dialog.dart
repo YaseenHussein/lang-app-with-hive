@@ -56,7 +56,7 @@ class _AddWordDialogState extends State<AddWordDialog> {
                 const SizedBox(
                   height: 15,
                 ),
-                CustomForm(label: "new Word", fromKey: newWordKey),
+                CustomForm(label: "new Word", formKey: newWordKey),
                 const SizedBox(
                   height: 15,
                 ),

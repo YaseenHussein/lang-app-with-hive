@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learn_lang_app/controller/read_data_cubit/read_data_cubit.dart';
-import 'package:learn_lang_app/controller/read_data_cubit/read_data_states.dart';
 import 'package:learn_lang_app/views/style/color_manger.dart';
 import 'package:learn_lang_app/views/widget/Lan_filter_widget.dart';
 

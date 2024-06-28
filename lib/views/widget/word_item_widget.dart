@@ -19,7 +19,12 @@ class WordItemWidget extends StatelessWidget {
             ),
           ),
         ).then((value) {
-          ReadDataCubit.get(context).getWords();
+          //هنا يحصل خطاء بسبب ان الواجهة لم تغلق بشكل كلي وحدث لنا الحالة الخاصة بنجاح
+          //ولكن عند عمل هذا التوقيت يجعلنا في امان ان الشاشة تم حذفها من المكدس
+          Future.delayed(const Duration(milliseconds: 500), () {
+            ReadDataCubit.get(context).getWords();
+          });
+          
         });
       },
       child: Container(

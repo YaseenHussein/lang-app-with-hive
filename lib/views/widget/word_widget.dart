@@ -4,6 +4,7 @@ import 'package:learn_lang_app/controller/read_data_cubit/read_data_cubit.dart';
 import 'package:learn_lang_app/controller/read_data_cubit/read_data_states.dart';
 import 'package:learn_lang_app/model/word_model.dart';
 import 'package:learn_lang_app/views/style/color_manger.dart';
+import 'package:learn_lang_app/views/widget/failed_and_loading_widgte.dart';
 import 'package:learn_lang_app/views/widget/word_item_widget.dart';
 
 class WordWidget extends StatelessWidget {
@@ -19,9 +20,9 @@ class WordWidget extends StatelessWidget {
           }
           return _getWordsWidget(state.words);
         } else if (state is ReadDataFailedState) {
-          return _getFailedWidget(state.message);
+          return getFailedWidget(state.message);
         } else {
-          return _getLoadingWidget(context);
+          return getLoadingWidget(context);
         }
       },
     );
@@ -67,36 +68,5 @@ class WordWidget extends StatelessWidget {
     );
   }
 
-  Widget _getFailedWidget(String message) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FittedBox(
-            child: Icon(
-              Icons.error,
-              color: ColorManger.white.withOpacity(.5),
-              size: 200,
-            ),
-          ),
-          Text(
-            message,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: ColorManger.white.withOpacity(.5),
-              fontSize: 25,
-            ),
-          )
-        ],
-      ),
-    );
-  }
 
-  Widget _getLoadingWidget(BuildContext context) {
-    return Center(
-      child: CircularProgressIndicator(
-        color: ColorManger.white,
-      ),
-    );
-  }
 }

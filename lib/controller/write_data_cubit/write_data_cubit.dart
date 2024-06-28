@@ -75,24 +75,25 @@ class WriteDataCubit extends Cubit<WriteDataStates> {
     }
   }
 
-  addSimilarWord(
-      {required int indexAtDatabase, required bool isArabicSimilarWord}) {
+  addSimilarWord({
+    required int indexAtDatabase,
+  }) {
     _tryAndCatchBloc(
         methodToExcuse: () {
           List<WordModel> words = _getListOfWords();
-          words[indexAtDatabase] = words[indexAtDatabase].addSimilarWord(
-              similarWord: text, isArabicSimilarWord: isArabicSimilarWord);
+          words[indexAtDatabase] = words[indexAtDatabase]
+              .addSimilarWord(similarWord: text, isArabicSimilarWord: isArabic);
           _box.put(HiveConstants.wordList, words);
         },
         message: "we have problems with add similar word please try later");
   }
 
-  addExample({required int indexAtDatabase, required bool isArabicExample}) {
+  addExample({required int indexAtDatabase}) {
     _tryAndCatchBloc(
         methodToExcuse: () {
           List<WordModel> words = _getListOfWords();
           words[indexAtDatabase] = words[indexAtDatabase]
-              .addExample(example: text, isArabicExample: isArabicExample);
+              .addExample(example: text, isArabicExample: isArabic);
           _box.put(HiveConstants.wordList, words);
         },
         message: "we have problems with add example word please try later");

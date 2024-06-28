@@ -80,7 +80,7 @@ class WordModel {
     List<String> newExamples = _checkExampleIsArabic(isArabicExample);
 
     newExamples.add(example);
-    return _getSimilarWordModel(isArabicExample, newExamples);
+    return _getExampleWordModel(isArabicExample, newExamples);
   }
 
   WordModel deleteExample(
